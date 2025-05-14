@@ -14,6 +14,10 @@ require_once "controlador/template_controler.php";
 require_once "modelos/routes.php";
 
 $template = new TemplateController();
+$template->Getheader();
 $template->GetTemplate();
+
+
+$template->GetFooter();
 
 ?>

@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Consulta de Factura</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css" />
-</head>
 <body class="bg-gray-100">
 
-<!-- Barra de Navegación -->
-<nav class="bg-blue-500 p-4">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="index.php" class="text-white text-lg font-bold">Sistema de Facturación de Luz</a>
-        <div>
-            <a href="registros/nuevo_cliente.php" class="text-white px-4">Registrarse</a>
-            <a href="consulta.php" class="text-white px-4">Consultar Factura</a>
-            <a href="turno.php" class="text-white px-4">Solicitar Turno</a>
-        </div>
-    </div>
-</nav>
 
 <!-- Contenido principal -->
 <div class="max-w-4xl mx-auto bg-white p-8 rounded shadow-md mt-8">
