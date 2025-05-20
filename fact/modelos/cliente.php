@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../conexion.php';
 
 class Cliente {
     public $id;
@@ -20,22 +21,35 @@ class Cliente {
         $this->dni = $dni;
     }
 
-    // Método para guardar el cliente en la base de datos
-    public function guardar($conexion) {
+    // Método para guardar usando las propiedades del objeto
+    public function guardar() {
+        $conexion = conexion::Connect();
+
         $sql = "INSERT INTO cliente (Nombre, Telefono, Fecha_Nacimiento, Saldo, Consumo_luz, Dni)
-                VALUES (?, ?, ?, ?, ?, ?)";
+                VALUES (:nombre, :telefono, :fecha_nacimiento, :saldo, :consumo_luz, :dni)";
+
         $stmt = $conexion->prepare($sql);
-        $stmt->bind_param("sisdis", $this->nombre, $this->telefono, $this->fecha_nacimiento, $this->saldo, $this->consumo_luz, $this->dni);
+
+        $stmt->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
+        $stmt->bindParam(':telefono', $this->telefono, PDO::PARAM_STR);
+        $stmt->bindParam(':fecha_nacimiento', $this->fecha_nacimiento, PDO::PARAM_STR);
+        $stmt->bindParam(':saldo', $this->saldo);
+        $stmt->bindParam(':consumo_luz', $this->consumo_luz, PDO::PARAM_INT);
+        $stmt->bindParam(':dni', $this->dni, PDO::PARAM_STR);
+
         return $stmt->execute();
     }
 
     // Método estático para obtener todos los clientes
-    public static function obtenerTodos($conexion) {
+    public static function obtenerTodos() {
+        $conexion = conexion::Connect();
+
+
         $sql = "SELECT * FROM cliente";
-        $resultado = $conexion->query($sql);
+        $stmt = $conexion->query($sql);
         $clientes = [];
 
-        while ($fila = $resultado->fetch_assoc()) {
+        while ($fila = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $clientes[] = new Cliente(
                 $fila['Nombre'],
                 $fila['Telefono'],
@@ -49,5 +63,15 @@ class Cliente {
 
         return $clientes;
     }
+  
+
+    public function buscarPorDNI($dni) {
+        $stmt = $this->conexion->prepare("SELECT * FROM clientes WHERE dni = ?");
+        $stmt->bind_param("s", $dni);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        return $resultado->fetch_assoc();
+    }
+
 }
 ?>

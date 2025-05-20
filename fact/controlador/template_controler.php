@@ -14,6 +14,7 @@ class TemplateController {
       public function GetFooter(): void {
         include "vistas/footer.php";
     }
+    
 }
 
 ?>

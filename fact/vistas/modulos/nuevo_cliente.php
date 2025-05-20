@@ -1,8 +1,7 @@
 <?php
+require_once __DIR__ . "/../../modelos/cliente.php";
 
-// Verificar si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recoger datos del formulario
     $nombre = $_POST['nombre'];
     $telefono = $_POST['telefono'];
     $fecha_nacimiento = $_POST['fecha_nacimiento'];
@@ -10,26 +9,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $consumo_luz = $_POST['consumo_luz'];
     $dni = $_POST['dni'];
 
-    // Crear objeto Cliente
     $cliente = new Cliente($nombre, $telefono, $fecha_nacimiento, $saldo, $consumo_luz, $dni);
 
-    // Conectar con la base de datos
-    $conexion = new mysqli("localhost", "root", "", "fact"); // Cambia los valores
-
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
-
-    // Guardar cliente en la base de datos
-    if ($cliente->guardar($conexion)) {
-        echo "Cliente registrado correctamente.";
+    if ($cliente->guardar()) {
+        header("Location: ../../index.php");
+        
+        exit;
     } else {
-        echo "Error al registrar el cliente: " . $conexion->error;
+        echo "<script>alert('Error al registrar el cliente.');</script>";
     }
-
-    $conexion->close();
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,9 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- FORMULARIO -->
 <div class="max-w-4xl mx-auto bg-white p-8 rounded shadow-md mt-8">
-    <h2 class="text-2xl font-semibold mb-6 text-center text-blue-700">Registrar Nuevo Cliente</h2>
+    <h2 class="text-2xl font-semibold mb-6 text-center text-blue-700"> <a class="underline decoration-sky-500">Nuevo  Cliente</a></h2>
     
-    <form method="post" action="nuevo_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <form method="post" action="vistas/modulos/nuevo_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
             <label class="block mb-1 text-sm font-medium text-gray-700">Nombre</label>
             <input type="text" name="nombre" required class="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:border-blue-500">
