@@ -13,7 +13,6 @@ $url = Routes::GetRoutes();
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <input type="hidden" value="<?php echo $url; ?>" id="hiddenPath">
 
   <?php
   $routes = array();
@@ -21,19 +20,30 @@ $url = Routes::GetRoutes();
   if (isset($_GET["ruta"])) {
       $routes = explode("/", $_GET["ruta"]);
 
-      if ($routes[0] == "factura") {
-          include "modulos/factura.php";
-      } else if ($routes[0] == "registrar") {
-          include "modulos/nuevo_cliente.php";
-      } else {
-          echo '<p>Ruta no encontrada. Verifique la URL.</p>';
+      switch ($routes[0]) {
+          case "factura":
+              include "modulos/factura.php";
+              break;
+
+          case "registrar":
+              include "modulos/nuevo_cliente.php";
+              break;
+
+          case "turno":
+              include "modulos/turno.php";
+              break;
+
+          default:
+              echo '<p>Ruta no encontrada. Verifique la URL.</p>';
+              break;
       }
   } else {
-
-      echo '<h1 class="text-3xl font-bold text-center mb-6 font-serif">Bienvenido al <a class="underline decoration-pink-500 ">sistema</a> <br> de <a class="underline decoration-indigo-500">facturacion</a> de luz.</h1>';
+      echo '<h1 class="text-3xl font-bold text-center mb-6 font-serif">
+              Bienvenido al <a class="underline decoration-pink-500 ">sistema</a> <br> 
+              de <a class="underline decoration-indigo-500">facturacion</a> de luz.
+            </h1>';
   }
   ?>
 
-  <script src="<?php echo $url; ?>/vistas/plugins/jquery/jquery.min.js"></script>
-</body>
+    </body>
 </html>

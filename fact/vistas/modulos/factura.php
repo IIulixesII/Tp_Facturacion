@@ -41,11 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
                 Total a Pagar: $<?= isset($factura['Saldo']) ? htmlspecialchars($factura['Saldo']) : 'No disponible' ?>
             </div>
         </div>
-
-        <button onclick="window.print()" class="bg-blue-500 text-white py-2 px-4 rounded mt-6 hover:bg-blue-600">Imprimir Factura</button>
+    
+        <button onclick="window.print()" class="bg-blue-500 text-white py-2 px-4 rounded mt-6 hover:bg-blue-600"  value="<?php echo $url; ?>" id="hiddenPath" >Imprimir Factura</button>
     <?php elseif ($dni): ?>
         <div class="mt-4 text-red-500">
             <p>No se encontraron facturas para el DNI ingresado.</p>
         </div>
     <?php endif; ?>
 </div>
+ <script src="<?php echo $url;?>/vistas/plugins/jquery/jquery.min.js"></script>
+
+    <script src="<?php echo $url;?>vistas/js/template.js"></script>

@@ -1,17 +1,14 @@
 <?php
 
 class HolaAjax {
-    public $dato = true;
+    public $stringValue;
 
-    public function registrar() {
-        if ($this->dato == true) {
-            echo "Registrado con éxito";
-            $this->dato = false;
-        }
+    public function printValue() {
+        var_dump($this->stringValue);
     }
 }
 
-// Ejemplo de uso
-
-
+$sprintHola = new HolaAjax();
+$sprintHola->stringValue = $_POST["moduloHola"];  
+$sprintHola->printValue();
 ?>
