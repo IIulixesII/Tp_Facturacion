@@ -42,13 +42,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
             </div>
         </div>
     
-        <button onclick="window.print()" class="bg-blue-500 text-white py-2 px-4 rounded mt-6 hover:bg-blue-600"  value="<?php echo $url; ?>" id="hiddenPath" >Imprimir Factura</button>
+        <!-- Input hidden para pasar el nombre a JS -->
+        <input type="hidden" id="hiddenPath" value="/fact">
+        <input type="hidden" id="nombrePersona" value="<?= htmlspecialchars($factura['Nombre'] ?? '') ?>">
+
+        <button type="button" id="btnImprimir" class="bg-blue-500 text-white py-2 px-4 rounded mt-6 hover:bg-blue-600">
+            Imprimir Factura
+        </button>
     <?php elseif ($dni): ?>
         <div class="mt-4 text-red-500">
             <p>No se encontraron facturas para el DNI ingresado.</p>
         </div>
     <?php endif; ?>
 </div>
- <script src="<?php echo $url;?>/vistas/plugins/jquery/jquery.min.js"></script>
 
-    <script src="<?php echo $url;?>vistas/js/template.js"></script>
+<script src="<?php echo $url;?>/vistas/plugins/jquery/jquery.min.js"></script>
+<script src="<?php echo $url;?>/vistas/js/template.js"></script>

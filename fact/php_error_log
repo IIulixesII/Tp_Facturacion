@@ -1,2 +1,75 @@
 [24-May-2025 03:33:18 America/Argentina/Buenos_Aires] PHP Warning:  include(modules/hola.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\fact\vistas\template.php on line 34
 [24-May-2025 03:33:18 America/Argentina/Buenos_Aires] PHP Warning:  include(): Failed opening 'modules/hola.php' for inclusion (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\fact\vistas\template.php on line 34
+[24-May-2025 22:59:21 America/Argentina/Buenos_Aires] PHP Warning:  require_once(C:\xampp\htdocs\fact\vistas\modulos/../modelos/turno.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 2
+[24-May-2025 22:59:21 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\fact\vistas\modulos/../modelos/turno.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\fact\vistas\modulos\turno.php:2
+Stack trace:
+#0 C:\xampp\htdocs\fact\vistas\template.php(33): include()
+#1 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#3 {main}
+  thrown in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 2
+[24-May-2025 23:00:04 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'turno' in 'where clause' in C:\xampp\htdocs\fact\modelos\turno.php:35
+Stack trace:
+#0 C:\xampp\htdocs\fact\modelos\turno.php(35): PDOStatement->execute()
+#1 C:\xampp\htdocs\fact\vistas\modulos\turno.php(5): Turno->turnolibre()
+#2 C:\xampp\htdocs\fact\vistas\template.php(33): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#5 {main}
+  thrown in C:\xampp\htdocs\fact\modelos\turno.php on line 35
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:00:35 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "nombre" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 27
+[24-May-2025 23:36:29 America/Argentina/Buenos_Aires] PHP Warning:  Undefined array key "turno" in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 28
+[24-May-2025 23:37:47 America/Argentina/Buenos_Aires] PHP Warning:  require_once(C:\xampp\htdocs\fact\modelos/../../modelos/turno.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\fact\modelos\turno.php on line 2
+[24-May-2025 23:37:47 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\fact\modelos/../../modelos/turno.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\fact\modelos\turno.php:2
+Stack trace:
+#0 C:\xampp\htdocs\fact\vistas\modulos\turno.php(2): require_once()
+#1 C:\xampp\htdocs\fact\vistas\template.php(33): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#4 {main}
+  thrown in C:\xampp\htdocs\fact\modelos\turno.php on line 2
+[24-May-2025 23:46:48 America/Argentina/Buenos_Aires] PHP Warning:  Undefined variable $turnos in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 9
+[24-May-2025 23:46:48 America/Argentina/Buenos_Aires] PHP Warning:  foreach() argument must be of type array|object, null given in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 9
+[24-May-2025 23:49:40 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to undefined method Turno::turnoAtendido() in C:\xampp\htdocs\fact\vistas\modulos\turno.php:9
+Stack trace:
+#0 C:\xampp\htdocs\fact\vistas\template.php(33): include()
+#1 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#3 {main}
+  thrown in C:\xampp\htdocs\fact\vistas\modulos\turno.php on line 9
+[24-May-2025 23:50:17 America/Argentina/Buenos_Aires] PHP Warning:  Undefined property: Turno::$conexion in C:\xampp\htdocs\fact\modelos\turno.php on line 49
+[24-May-2025 23:50:17 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\fact\modelos\turno.php:49
+Stack trace:
+#0 C:\xampp\htdocs\fact\vistas\modulos\turno.php(9): Turno->turnoAtendido()
+#1 C:\xampp\htdocs\fact\vistas\template.php(33): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#4 {main}
+  thrown in C:\xampp\htdocs\fact\modelos\turno.php on line 49
+[24-May-2025 23:50:18 America/Argentina/Buenos_Aires] PHP Warning:  Undefined property: Turno::$conexion in C:\xampp\htdocs\fact\modelos\turno.php on line 49
+[24-May-2025 23:50:18 America/Argentina/Buenos_Aires] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in C:\xampp\htdocs\fact\modelos\turno.php:49
+Stack trace:
+#0 C:\xampp\htdocs\fact\vistas\modulos\turno.php(9): Turno->turnoAtendido()
+#1 C:\xampp\htdocs\fact\vistas\template.php(33): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\fact\controlador\template_controler.php(5): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
+#4 {main}
+  thrown in C:\xampp\htdocs\fact\modelos\turno.php on line 49

@@ -32,6 +32,10 @@ $url = Routes::GetRoutes();
           case "turno":
               include "modulos/turno.php";
               break;
+            
+          case "turnos":
+              include "modulos/turnos.php";
+              break;
 
           default:
               echo '<p>Ruta no encontrada. Verifique la URL.</p>';
