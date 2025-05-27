@@ -9,7 +9,10 @@ require_once 'conexion.php'; // Verifica que la ruta sea correcta
 
 $template = new TemplateController();
 $template->GetHeader();  // genera <html><head>...<body>
+
+
 $template->GetTemplate(); // contenido principal
 $template->GetFooter();  // aquí va tu footer
+
 
 ?>

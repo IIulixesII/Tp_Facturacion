@@ -73,3 +73,12 @@ Stack trace:
 #3 C:\xampp\htdocs\fact\index.php(12): TemplateController->GetTemplate()
 #4 {main}
   thrown in C:\xampp\htdocs\fact\modelos\turno.php on line 49
+[25-May-2025 14:09:03 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 58
+[25-May-2025 14:09:03 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 59
+[25-May-2025 14:09:30 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 58
+[25-May-2025 14:09:30 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 59
+[25-May-2025 14:09:34 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 58
+[25-May-2025 14:09:34 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 59
+[25-May-2025 14:32:47 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 58
+[25-May-2025 14:32:47 Europe/Berlin] PHP Warning:  Undefined variable $url in C:\xampp\htdocs\fact\vistas\modulos\factura.php on line 59
+[26-May-2025 01:44:18 Europe/Berlin] PHP Warning:  session_start(): Session cannot be started after headers have already been sent in C:\xampp\htdocs\fact\vistas\template.php on line 2

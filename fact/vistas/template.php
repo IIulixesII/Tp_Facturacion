@@ -12,42 +12,47 @@ $url = Routes::GetRoutes();
   <title>Sistema de Facturación de Luz</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-[#1E293B] text-[#F1F5F9]">
+<?php if (!isset($_GET["ruta"])): ?>
+ <?php include_once "contenidoindex.php"; ?>
+<?php endif; ?>
 
-  <?php
-  $routes = array();
 
-  if (isset($_GET["ruta"])) {
-      $routes = explode("/", $_GET["ruta"]);
 
-      switch ($routes[0]) {
-          case "factura":
-              include "modulos/factura.php";
-              break;
+  <!-- Contenedor principal -->
+    <?php
+    $routes = array();
 
-          case "registrar":
-              include "modulos/nuevo_cliente.php";
-              break;
+    if (isset($_GET["ruta"])) {
+        $routes = explode("/", $_GET["ruta"]);
 
-          case "turno":
-              include "modulos/turno.php";
-              break;
-            
-          case "turnos":
-              include "modulos/turnos.php";
-              break;
+        switch ($routes[0]) {
+            case "factura":
+                include "modulos/factura.php";
+                break;
 
-          default:
-              echo '<p>Ruta no encontrada. Verifique la URL.</p>';
-              break;
-      }
-  } else {
-      echo '<h1 class="text-3xl font-bold text-center mb-6 font-serif">
-              Bienvenido al <a class="underline decoration-pink-500 ">sistema</a> <br> 
-              de <a class="underline decoration-indigo-500">facturacion</a> de luz.
-            </h1>';
-  }
-  ?>
+            case "registrar":
+                include "modulos/nuevo_cliente.php";
+                break;
 
-    </body>
+            case "turno":
+                include "modulos/turno.php";
+                break;
+
+            case "turnos":
+                include "modulos/turnos.php";
+                break;
+
+            default:
+                include_once "modulos/clima.php";
+                echo '<p class="text-red-500 mt-4">Ruta no encontrada. Verifique la URL.</p>';
+                break;
+        }
+    } else {
+        include_once "modulos/clima.php";
+    }
+    ?>
+  </div>
+
+</body>
 </html>
