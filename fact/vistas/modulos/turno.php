@@ -8,6 +8,7 @@ $turnos = $turno->turnolibre(); // turnos sin atender
 // Si no, se puede poner un ejemplo estático o un mensaje vacío
 $turnoAtendido = $turno->turnoAtendido(); // devuelve el turno actual atendido o null
 ?>
+<div class="h-20"></div>
 
 <div class="container mx-auto px-6 py-8">
 

@@ -2,13 +2,13 @@
 <div class="relative w-full h-64 sm:h-96 bg-cover bg-center" style="background-image: url('fondo/larg.webp');">
   <div class="absolute inset-0 bg-[#0F172A]/70 flex items-center justify-center px-4">
     <h1 class="text-3xl sm:text-5xl font-extrabold font-serif text-white drop-shadow-md text-center leading-tight">
-      Bienvenido al sistema<br>de facturación de luz.
+      Bienvenido al sistema de facturación de luz.
     </h1>
   </div>
 </div>
 
-<!-- Sección de cuadrados con iconos Heroicons -->
-<div class="max-w-6xl mx-auto px-4 mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Sección de Servicios -->
+<div class="max-w-6xl mx-auto px-4 mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
   <!-- Atención al Cliente -->
   <div class="bg-[#0F172A] hover:bg-[#1E3A8A] text-[#F1F5F9] rounded-lg p-6 flex flex-col items-center text-center transition">
     <svg class="h-16 w-16 text-[#38BDF8] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -58,17 +58,7 @@
     <div class="p-6">
       <div class="text-sm font-semibold tracking-wide text-[#7C3AED] uppercase">Tecnología moderna</div>
       <div class="mt-1 text-lg leading-tight font-medium">Medidores inteligentes de consumo</div>
-      <p class="mt-2 text-gray-300">Nuestros dispositivos permiten monitorear tu consumo en tiempo real, ayudándote a optimizar el uso de energía.</p>
-    </div>
-  </div>
-
-  <!-- Tarjeta 2 -->
-  <div class="flex flex-col md:flex-row bg-[#0F172A] hover:bg-[#1E3A8A] text-[#F1F5F9] shadow-xl rounded-xl overflow-hidden transform transition duration-700 ease-in-out hover:scale-[1.01] opacity-0 animate-fadeInUp delay-200">
-    <img class="h-52 w-full object-cover md:w-56 md:h-auto" src="fondo/factura.webp" alt="Factura eléctrica" />
-    <div class="p-6">
-      <div class="text-sm font-semibold tracking-wide text-[#7C3AED] uppercase">Facturación transparente</div>
-      <div class="mt-1 text-lg leading-tight font-medium">Detalles claros de tus consumos</div>
-      <p class="mt-2 text-gray-300">Cada factura incluye desglose detallado de cargos, tarifas y períodos de lectura para tu confianza.</p>
+      <p class="text-gray-300">Nuestros dispositivos permiten monitorear tu consumo en tiempo real, ayudándote a optimizar el uso de energía.</p>
     </div>
   </div>
 
@@ -78,9 +68,19 @@
     <div class="p-6">
       <div class="text-sm font-semibold tracking-wide text-[#7C3AED] uppercase">Soporte técnico</div>
       <div class="mt-1 text-lg leading-tight font-medium">Siempre listos para asistirte</div>
-      <p class="mt-2 text-gray-300">Nuestro equipo especializado te guía en cada paso, desde la instalación hasta la resolución de inconvenientes.</p>
+      <p class="text-gray-300">Nuestro equipo especializado te guía en cada paso, desde la instalación hasta la resolución de inconvenientes.</p>
     </div>
   </div>
+  <!-- Tarjeta 2 -->
+  <div class="flex flex-col md:flex-row bg-[#0F172A] hover:bg-[#1E3A8A] text-[#F1F5F9] shadow-xl rounded-xl overflow-hidden transform transition duration-700 ease-in-out hover:scale-[1.01] opacity-0 animate-fadeInUp delay-200">
+    <img class="h-52 w-full object-cover md:w-56 md:h-auto" src="fondo/factura.webp" alt="Factura eléctrica" />
+    <div class="p-6">
+      <div class="text-sm font-semibold tracking-wide text-[#7C3AED] uppercase">Facturación transparente</div>
+      <div class="mt-1 text-lg leading-tight font-medium">Detalles claros de tus consumos</div>
+      <p class="text-gray-300">Cada factura incluye desglose detallado de cargos, tarifas y períodos de lectura para tu confianza.</p>
+    </div>
+  </div>
+
 </div>
 
 <!-- Espaciado final -->
@@ -109,5 +109,99 @@
 
   .delay-400 {
     animation-delay: 0.4s;
+
+    
+  }
+ /* Si querés afectar todos los svg en la sección de servicios: */
+.grid > div svg {
+  height: 3rem;  /* 48px */
+  width: 3rem;
+}
+
+/* Para que en móvil sean más chicos */
+@media (max-width: 640px) {
+  .grid > div svg {
+    height: 2rem;
+    width: 2rem;
+  }
+  .p{
+       font-size: 1px;
+  color: #333;
+  margin-bottom: 1rem;
+  }
+}
+
+  
+  <style>
+  @media (max-width: 640px) {
+    /* Ajustar la altura de la imagen principal */
+    .h-64 {
+      height: 8rem;
+    }
+
+    /* Reducir el tamaño del texto del encabezado */
+    .text-3xl {
+      font-size: 1.25rem;
+    }
+
+    .sm\:text-5xl {
+      font-size: 1.75rem !important;
+    }
+
+    /* Configurar la cuadrícula de servicios en una sola columna */
+    .grid-cols-2 {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Reducir el tamaño de los íconos */
+    .h-16, .w-16 {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    /* Ajustar el tamaño del título y la descripción */
+    .text-xl {
+      font-size: 0.9rem;
+    }
+
+    .text-gray-300 {
+      font-size: 0.75rem;
+    }
+
+    /* Reducir el padding de los cuadros de servicios */
+    .p-6 {
+      padding: 0.75rem;
+    }
+
+    /* Ajustar las tarjetas informativas */
+    .h-52 {
+      height: 6rem;
+    }
+
+    .text-lg {
+      font-size: 0.9rem;
+    }
+
+    .text-sm {
+      font-size: 0.7rem;
+    }
+
+    .leading-tight {
+      line-height: 1rem;
+    }
+
+    .md\:flex-row {
+      flex-direction: column !important;
+    }
+
+    .md\:w-56 {
+      width: 100% !important;
+    }
+
+    .md\:h-auto {
+      height: auto !important;
+    }
+ 
+
   }
 </style>

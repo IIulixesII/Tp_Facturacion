@@ -4,15 +4,7 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 $url = Routes::GetRoutes();
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sistema de Facturación de Luz</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#1E293B] text-[#F1F5F9]">
+
 <?php if (!isset($_GET["ruta"])): ?>
  <?php include_once "contenidoindex.php"; ?>
 <?php endif; ?>
@@ -54,5 +46,3 @@ $url = Routes::GetRoutes();
     ?>
   </div>
 
-</body>
-</html>
