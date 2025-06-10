@@ -10,10 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
 }
 ?>
 
-<!-- Google Fonts: Roboto -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
-<div class="h-40"></div>
 
 <div class="max-w-4xl mx-auto bg-[#2c3e50] p-10 rounded-3xl shadow-xl mt-8 text-white font-roboto">
     <h1 class="text-3xl font-medium text-center mb-8 tracking-normal drop-shadow-md">Consulta de Factura</h1>
@@ -78,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
         </div>
     <?php endif; ?>
 </div>
+<div class="h-40"></div>
 
 <script src="<?php echo $url;?>/vistas/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo $url;?>/vistas/js/template.js"></script>

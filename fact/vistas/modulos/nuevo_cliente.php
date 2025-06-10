@@ -1,34 +1,10 @@
-<?php
-require_once __DIR__ . "/../../modelos/cliente.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = $_POST['nombre'];
-    $telefono = $_POST['telefono'];
-    $fecha_nacimiento = $_POST['fecha_nacimiento'];
-    $saldo = $_POST['saldo'];
-    $consumo_luz = $_POST['consumo_luz'];
-    $dni = $_POST['dni'];
-
-    $cliente = new Cliente($nombre, $telefono, $fecha_nacimiento, $saldo, $consumo_luz, $dni);
-
-    if ($cliente->guardar()) {
-        header("Location: ../../index.php");
-        exit;
-    } else {
-        echo "<script>alert('Error al registrar el cliente.');</script>";
-    }
-}
-?>
-
-<!DOCTYPE html>
-<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <title>Nuevo Cliente</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     /* Fuente profesional */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
     body {
       font-family: 'Inter', sans-serif;
     }
@@ -60,15 +36,14 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
     }
   </style>
 </head>
-<body>
 
-  <div class="min-h-screen flex items-center justify-center px-4">
+  <div class=" flex items-center justify-center px-4">
     <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-3xl w-full p-12 md:p-16">
       <h2 class="text-3xl font-semibold text-gray-800 mb-10 text-center tracking-tight">
         Registro de Nuevo Cliente
       </h2>
 
-      <form method="post" action="vistas/modulos/nuevo_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
+      <form method="post" action="../../fact/controlador/controlador_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
         <div>
           <label class="block mb-2 font-medium text-gray-700">Nombre</label>
           <input type="text" name="nombre" required
@@ -114,6 +89,7 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
       </form>
     </div>
   </div>
+  <div class="h-20"></div>
 
 </body>
 </html>

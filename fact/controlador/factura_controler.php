@@ -7,3 +7,4 @@ class factura_controler {
         return FacturaModelo::obtenerFacturaPorDNI($dni);
     }
 }
+

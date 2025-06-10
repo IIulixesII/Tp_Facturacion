@@ -132,7 +132,6 @@
 }
 
   
-  <style>
   @media (max-width: 640px) {
     /* Ajustar la altura de la imagen principal */
     .h-64 {
