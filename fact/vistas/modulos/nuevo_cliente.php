@@ -36,8 +36,8 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
     }
   </style>
 </head>
-
-  <div class=" flex items-center justify-center px-4">
+  <div class="h-20"> </div> 
+  <div class=" flex items-center justify-center mt-6">
     <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-3xl w-full p-12 md:p-16">
       <h2 class="text-3xl font-semibold text-gray-800 mb-10 text-center tracking-tight">
         Registro de Nuevo Cliente
@@ -89,6 +89,7 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
       </form>
     </div>
   </div>
+
   <div class="h-20"></div>
 
 </body>
