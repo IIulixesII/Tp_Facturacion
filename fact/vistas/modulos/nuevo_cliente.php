@@ -43,7 +43,7 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
         Registro de Nuevo Cliente
       </h2>
 
-      <form method="post" action="../../fact/controlador/controlador_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
+      <form method="post" action="/Tp_Facturacion/fact/controlador/controlador_cliente.php" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
         <div>
           <label class="block mb-2 font-medium text-gray-700">Nombre</label>
           <input type="text" name="nombre" required

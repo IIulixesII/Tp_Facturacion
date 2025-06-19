@@ -23,7 +23,7 @@ class Cliente {
 
     // Método para guardar un cliente en la base de datos
     public function guardar() {
-        $conexion = conexion::conectar();
+        $conexion = Conexion::conectar();
 
         // Si no hay conexión, lanzar una excepción
         if (!$conexion) {
@@ -50,7 +50,7 @@ class Cliente {
 
     // Método estático para obtener todos los clientes
     public static function obtenerTodos() {
-        $conexion = conexion::conectar();
+        $conexion = Conexion::conectar();
 
         // Si no hay conexión, lanzar una excepción
         if (!$conexion) {
@@ -80,7 +80,7 @@ class Cliente {
 
     // Método para buscar un cliente por DNI
     public function buscarPorDNI($dni) {
-        $conexion = conexion::conectar();
+        $conexion = Conexion::conectar();
 
         if (!$conexion) {
             throw new Exception('No se pudo conectar a la base de datos.');
