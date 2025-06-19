@@ -31,8 +31,8 @@ $url = Routes::GetRoutes();
                 include "modulos/turno.php";
                 break;
 
-            case "turnos":
-                include "modulos/turnos.php";
+            case "soporte":
+                include "modulos/soporte.php";
                 break;
 
             default:
