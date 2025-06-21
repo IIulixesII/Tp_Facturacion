@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
     $factura = factura_controler::buscarPorDNI($dni);
 }
 ?>
-
+<div class="h-40"></div>
 <div id="facturaContenido">
 
 <div class="max-w-4xl mx-auto bg-[#2c3e50] p-10 rounded-3xl shadow-xl mt-8 text-white font-roboto">
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["dni"])) {
     <?php endif; ?>
 </div>
 
-<div class="h-60"></div>
+<div class="h-40"></div>
 
 <script src="<?php echo $url;?>/vistas/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo $url;?>/vistas/js/template.js"></script>

@@ -36,7 +36,6 @@
         <p class="text-gray-700 mb-6 text-lg">¡Gracias por contactarte con el sector de Soporte! Por favor, calificá tu
             experiencia:</p>
 
-        
         <div id="estrellas" class="flex justify-center gap-2 mb-4">
             <span class="estrella" data-value="1">&#9733;</span>
             <span class="estrella" data-value="2">&#9733;</span>
@@ -48,23 +47,32 @@
         <p id="valoracion" class="text-sm text-gray-600 mb-6"></p>
 
         <p class="text-gray-500 text-sm mb-6">Tu opinión es muy importante para nosotros.</p>
-         <!-- ruta correspondiente a soporte- form -->
-        <a href="../../index.php?ruta=soporte"
-            class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition">
-            Volver al formulario
-        </a>
+        <!-- ruta correspondiente a soporte-
+                        form -->
+        <form method="post" action="/Tp_Facturacion/fact/controlador/controlador_soporte.php">
+            <input type="hidden" name="valoracion" id="valoracionInput" value="">
+            <button type="submit"
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition">
+                Volver al formulario
+
+            </button>
+        </form>
     </div>
 
     <script>
         const estrellas = document.querySelectorAll('.estrella');
         const resultado = document.getElementById('valoracion');
+        const valoracionInput = document.getElementById('valoracionInput');
 
         estrellas.forEach((estrella, index) => {
             estrella.addEventListener('click', () => {
                 estrellas.forEach((e, i) => {
                     e.classList.toggle('seleccionada', i <= index);
                 });
-                resultado.textContent = `Valoraste con ${index + 1} estrella${index + 1 > 1 ? 's' : ''}.`;
+
+                const valor = index + 1;
+                resultado.textContent = `Valoraste con ${valor} estrella${valor > 1 ? 's' : ''}.`;
+                valoracionInput.value = valor;
             });
         });
     </script>
