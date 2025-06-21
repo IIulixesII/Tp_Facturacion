@@ -35,6 +35,9 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
       transition: background-color 0.3s ease;
     }
   </style>
+
+
+
 </head>
   <div class="h-20"> </div> 
   <div class=" flex items-center justify-center mt-6">
@@ -64,13 +67,13 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
         
         <div>
           <label class="block mb-2 font-medium text-gray-700">DNI</label>
-          <input type="text" name="dni" required
+          <input type="number" name="dni" required
             class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" />
         </div>
 
          <div class="md:col-span-2">
           <label class="block mb-2 font-medium text-gray-700">Consulta</label>
-          <textarea name="consulta" rows="5" required
+          <textarea name="mensaje" rows="5" required
             class="w-full p-3 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             placeholder="Escribí tu consulta aquí..."></textarea>
         </div>
