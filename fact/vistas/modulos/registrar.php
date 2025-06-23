@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if (!empty($errores)) {
-    // Mostrar errores si los hay
+
     $mensaje = '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-center">';
     $mensaje .= '<strong class="font-bold">Errores en el formulario:</strong><br>';
     foreach ($errores as $e) {
@@ -40,9 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $mensaje .= '</div>';
   } else {
-    // Si no hay errores, continuar con el registro
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $usuario = new Usuario($nombreUsuario, $email, $password_hash, 'cliente');
+
+    $usuario = new Usuario($nombreUsuario, $email, $password, 'cliente');
 
     if ($usuario->existeEmail($email)) {
       $mensaje = "<p class='text-red-600 text-center mt-4'>El email ya está registrado.</p>";
