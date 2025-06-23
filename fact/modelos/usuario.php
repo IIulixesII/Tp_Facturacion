@@ -17,7 +17,6 @@ class Usuario
         $this->rol = $rol;
     }
 
-
     public function existeEmail($email)
     {
         $pdo = Conexion::conectar();
@@ -35,7 +34,7 @@ class Usuario
     }
 
     public function guardar()
-{
+    {
     $pdo = Conexion::conectar();
 
     $hash = password_hash($this->password, PASSWORD_DEFAULT);
@@ -45,7 +44,7 @@ class Usuario
         return $pdo->lastInsertId();
     }
     return false;
-}
+    }
 
 
 
@@ -68,5 +67,4 @@ class Usuario
 
         return null;
     }
-    
 }
