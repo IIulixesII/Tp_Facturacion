@@ -33,7 +33,7 @@ INSERT INTO `usuario` (`id`, `nombreUsuario`, `email`, `password`, `rol`, `activ
 (6, 'Cata001', 'catalina@a.com', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'cliente', 1);
 
 -- --------------------------------------------------------
--- Tabla: cliente (actualizada)
+-- Tabla: cliente
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
@@ -77,7 +77,26 @@ INSERT INTO `turno` (`id`, `nombre`, `numero`, `estado`) VALUES
 (3, 'Ulises', '4', 'sinatender'),
 (4, 'Ticiano', '5', 'sinatender');
 
--- Índices
+-- --------------------------------------------------------
+-- Tabla: soporte
+CREATE TABLE `soporte` (
+  `id_soporte` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `telefono` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `dni` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `mensaje` TEXT NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `fecha` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `valoracion` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id_soporte`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `soporte` (`nombre`, `email`, `telefono`, `dni`, `mensaje`, `valoracion`) VALUES
+('Juan Pérez', 'juan@gmail.com', '123456789', '12345678', 'No puedo ver mi factura.', 3),
+('Ana García', 'ana@gmail.com', '987654321', '87654321', 'El sistema no carga bien.', 5);
+
+-- --------------------------------------------------------
+-- Índices y claves foráneas
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
@@ -92,7 +111,7 @@ ALTER TABLE `factura`
 ALTER TABLE `turno`
   ADD PRIMARY KEY (`id`);
 
--- AUTO_INCREMENT
+-- Auto increment
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
@@ -105,7 +124,7 @@ ALTER TABLE `factura`
 ALTER TABLE `turno`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
--- Foreign Keys
+-- Foreign keys
 ALTER TABLE `cliente`
   ADD CONSTRAINT `fk_cliente_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`);
 

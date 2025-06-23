@@ -3,13 +3,21 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once 'modelos/usuario.php';
+require_once 'modelos/Usuario.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
     $usuario = Usuario::buscarPorEmail($email);
+     if ($usuario) {
+        echo "<pre>";
+        echo "Email: $email\n";
+        echo "Pass ingresada: $password\n";
+        echo "Hash BD: {$usuario->password}\n";
+        echo "password_verify: " . (password_verify($password, $usuario->password) ? 'OK' : 'FALLA') . "\n";
+        echo "</pre>";
+    }
 
     if ($usuario && password_verify($password, $usuario->password)) {
         $_SESSION['usuario'] = $usuario;
@@ -29,21 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 exit;
         }
     } else {
-        echo "<pre>";
-        var_dump($usuario);
-        echo "</pre>";
-
-        echo "Contraseña ingresada: " . $password . "<br>";
-        echo "Hash guardado: " . ($usuario ? $usuario->password : 'Usuario no encontrado') . "<br>";
-        echo "Verificación: " . ($usuario && password_verify($password, $usuario->password) ? 'OK' : 'FALLA') . "<br>";
-
         $mensaje = "<p class='text-red-600 text-center mt-4'>Email o contraseña incorrectos.</p>";
     }
 }
+
 ?>
-
-
-<!-- FORMULARIO -->
+<!-- FORMULARIO LOGIN -->
 <div class="flex items-center justify-center px-4 min-h-screen">
     <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-md w-full p-10 md:p-12">
         <h2 class="text-3xl font-semibold text-gray-800 mb-8 text-center tracking-tight">
