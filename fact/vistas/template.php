@@ -4,45 +4,31 @@ date_default_timezone_set('America/Argentina/Buenos_Aires');
 $url = Routes::GetRoutes();
 ?>
 
+<?php
+// Lista blanca de módulos permitidos
+$modulosPermitidos = [
+    "factura", "registrar", "turno", "turnos","nuevo_cliente","soporte","valoracion",
+    "iniciar", "administrar", "caja", "inicio",
+    "cerrar_sesion"  
+];
+// Sanitizar parámetro ruta
+$ruta = isset($_GET["ruta"]) ? explode("/", $_GET["ruta"])[0] : null;
 
-<?php if (!isset($_GET["ruta"])): ?>
- <?php include_once "contenidoindex.php"; ?>
-<?php endif; ?>
+// Verificar si la ruta está permitida
+if ($ruta && in_array($ruta, $modulosPermitidos)) {
+    // Definir constante para evitar acceso directo a los módulos
+    define('ACCESO_PERMITIDO', true);
 
+    // Incluir el módulo correspondiente
+    include "modulos/" . $ruta . ".php";
 
+} elseif ($ruta) {
+    // Si la ruta no está permitida
+    include "modulos/clima.php";
+    echo '<p class="text-red-500 mt-4">Ruta no encontrada. Verifique la URL.</p>';
 
-  <!-- Contenedor principal -->
-    <?php
-    $routes = array();
-
-    if (isset($_GET["ruta"])) {
-        $routes = explode("/", $_GET["ruta"]);
-
-        switch ($routes[0]) {
-            case "factura":
-                include "modulos/factura.php";
-                break;
-
-            case "registrar":
-                include "modulos/nuevo_cliente.php";
-                break;
-
-            case "turno":
-                include "modulos/turno.php";
-                break;
-
-            case "soporte":
-                include "modulos/soporte.php";
-                break;
-
-            default:
-                include_once "modulos/clima.php";
-                echo '<p class="text-red-500 mt-4">Ruta no encontrada. Verifique la URL.</p>';
-                break;
-        }
-    } else {
-        include_once "modulos/clima.php";
-    }
-    ?>
-  </div>
-
+} else {
+    // Si no hay ruta, mostrar contenido por defecto
+    include_once "contenidoindex.php";
+}
+?>
