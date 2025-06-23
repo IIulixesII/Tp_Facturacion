@@ -7,7 +7,7 @@ $url = Routes::GetRoutes();
 <?php
 // Lista blanca de módulos permitidos
 $modulosPermitidos = [
-    "factura", "registrar", "turno", "turnos",
+    "factura", "registrar", "turno", "turnos","nuevo_cliente","soporte","valoracion",
     "iniciar", "administrar", "caja", "inicio",
     "cerrar_sesion"  
 ];

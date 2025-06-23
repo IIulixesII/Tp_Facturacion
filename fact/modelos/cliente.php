@@ -26,9 +26,9 @@ class Cliente
         $this->id = $id;
     }
 
-    public function guardar()
-    {
-        $conexion = conexion::conectar();
+    // Método para guardar un cliente en la base de datos
+    public function guardar() {
+        $conexion = Conexion::conectar();
 
         if (!$conexion) {
             throw new Exception('No se pudo conectar a la base de datos.');
@@ -51,9 +51,9 @@ class Cliente
         return $stmt->execute();
     }
 
-    public static function obtenerTodos()
-    {
-        $conexion = conexion::conectar();
+
+    public static function obtenerTodos() {
+        $conexion = Conexion::conectar();
 
         if (!$conexion) {
             throw new Exception('No se pudo conectar a la base de datos.');
@@ -80,9 +80,9 @@ class Cliente
         return $clientes;
     }
 
-    public static function buscarPorDNI($dni)
-    {
-        $conexion = conexion::conectar();
+    // Método para buscar un cliente por DNI
+    public function buscarPorDNI($dni) {
+        $conexion = Conexion::conectar();
 
         if (!$conexion) {
             throw new Exception('No se pudo conectar a la base de datos.');
