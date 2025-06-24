@@ -88,7 +88,7 @@
 
     <?php endif; ?>
 </div>
-
+</div>
 <div class="h-60"></div>
 
   
