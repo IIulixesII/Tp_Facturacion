@@ -30,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: index.php?ruta=caja');
                 exit;
             case 'cliente':
+
                 header('Location: index.php?ruta=factura');
+
+                
+
                 exit;
             default:
                 header('Location: index.php');

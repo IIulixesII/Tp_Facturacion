@@ -16,6 +16,7 @@ if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->rol !== 'cajero') {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

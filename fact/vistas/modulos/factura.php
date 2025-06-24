@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -39,9 +40,11 @@
         >
           Buscar
         </button>
+
       </form>
 
       <?php if ($factura): ?>
+
         <table class="w-full text-left mb-8 border-collapse rounded-lg overflow-hidden shadow-md bg-white bg-opacity-20 backdrop-blur-sm">
           <tbody>
             <tr class="border-b border-gray-400">
@@ -82,10 +85,11 @@
         <div class="mt-6 bg-red-700 bg-opacity-80 text-red-100 p-4 rounded-lg shadow-inner text-center font-medium animate-pulse">
           No se encontraron facturas para el DNI ingresado.
         </div>
-      <?php endif; ?>
-    </div>
-  </div>
 
+    <?php endif; ?>
+</div>
+
+  
 
   <script src="<?php echo $url; ?>/vistas/plugins/jquery/jquery.min.js"></script>
   <script src="<?php echo $url; ?>/vistas/js/template.js"></script>
