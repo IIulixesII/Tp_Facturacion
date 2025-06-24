@@ -32,7 +32,6 @@ INSERT INTO `usuario` (`id`, `nombreUsuario`, `email`, `password`, `rol`, `activ
 (5, 'Dario789', 'dario@a.com', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'cliente', 1),
 (6, 'Cata001', 'catalina@a.com', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'cliente', 1);
 
--- --------------------------------------------------------
 -- Tabla: cliente
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
@@ -52,7 +51,6 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `telefono`, `fecha_nacimiento
 (3, 'Dario', 'Pérez', '2131243', '1995-12-12', 50090.00, 214124, 22333444, 5),
 (4, 'Catalina', 'López', '2954326436', '1997-07-13', 124124.00, 123124412, 44777888, 6);
 
--- --------------------------------------------------------
 -- Tabla: factura
 CREATE TABLE `factura` (
   `id` int(11) NOT NULL,
@@ -62,7 +60,6 @@ CREATE TABLE `factura` (
   `total` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
 -- Tabla: turno
 CREATE TABLE `turno` (
   `id` int(11) NOT NULL,
@@ -77,15 +74,14 @@ INSERT INTO `turno` (`id`, `nombre`, `numero`, `estado`) VALUES
 (3, 'Ulises', '4', 'sinatender'),
 (4, 'Ticiano', '5', 'sinatender');
 
--- --------------------------------------------------------
 -- Tabla: soporte
 CREATE TABLE `soporte` (
   `id_soporte` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-  `email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
-  `telefono` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-  `dni` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_0900_ai_ci',
-  `mensaje` TEXT NOT NULL COLLATE 'utf8mb4_0900_ai_ci',
+  `nombre` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+  `email` VARCHAR(100) NOT NULL COLLATE 'utf8mb4_general_ci',
+  `telefono` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+  `dni` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+  `mensaje` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
   `fecha` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `valoracion` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id_soporte`) USING BTREE
@@ -95,7 +91,6 @@ INSERT INTO `soporte` (`nombre`, `email`, `telefono`, `dni`, `mensaje`, `valorac
 ('Juan Pérez', 'juan@gmail.com', '123456789', '12345678', 'No puedo ver mi factura.', 3),
 ('Ana García', 'ana@gmail.com', '987654321', '87654321', 'El sistema no carga bien.', 5);
 
--- --------------------------------------------------------
 -- Índices y claves foráneas
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
