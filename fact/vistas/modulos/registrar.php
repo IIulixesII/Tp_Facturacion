@@ -67,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <!-- Formulario -->
+
 <div class="flex justify-center items-start px-4 pt-24 min-h-screen">
   <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-3xl w-full p-10 md:p-16">
     <h2 class="text-3xl font-semibold text-gray-800 mb-10 text-center tracking-tight">
@@ -125,3 +126,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
   </div>
 </div>
+<div class="h-20"> </div> 
