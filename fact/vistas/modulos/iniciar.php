@@ -1,43 +1,29 @@
 <?php
 
-require_once 'modelos/Usuario.php';
+require_once 'controlador/controlador_usuario.php';
 
 $mensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-
-
-    // Validación del email
-     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $mensaje = "<p class='text-red-600 text-center mt-4'>Formato de email no válido.</p>";
+    $resultado = UsuarioControlador::login(trim($_POST['email']), $_POST['password']);
+    if ($resultado['error']) {
+        $mensaje = "<p class='text-red-600 text-center mt-4'>{$resultado['mensaje']}</p>";
     } else {
-        $usuario = Usuario::buscarPorEmail($email);
-
-        if ($usuario && password_verify($password, $usuario->password)) {
-            $_SESSION['usuario'] = $usuario;
-
-            // Redirección según el rol
-            switch ($usuario->rol) {
-                case 'admin':
-                    header('Location: index.php?ruta=administrar');
-                    exit;
-                case 'cajero':
-                    header('Location: index.php?ruta=caja');
-                    exit;
-                case 'cliente':
-                    header('Location: index.php?ruta=inicio');
-                    exit;
-                default:
-                    header('Location: index.php');
-                    exit;
-            }
-        } else {
-            $mensaje = "<p class='text-red-600 text-center mt-4'>Email o contraseña incorrectos.</p>";
+        // Redirigir según rol
+        $rol = $resultado['usuario']->rol;
+        switch ($rol) {
+            case 'admin':
+                header('Location: index.php?ruta=administrar'); exit;
+            case 'cajero':
+                header('Location: index.php?ruta=caja'); exit;
+            case 'cliente':
+                header('Location: index.php?ruta=inicio'); exit;
+            default:
+                header('Location: index.php'); exit;
         }
     }
 }
+
 ?>
 
 <!-- FORMULARIO LOGIN -->

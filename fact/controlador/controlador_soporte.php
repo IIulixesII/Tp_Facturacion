@@ -1,28 +1,10 @@
 <?php
+require_once __DIR__ . '/../includes/sesion.php';
 require_once __DIR__ . '/../modelos/Soporte.php';
-$mensaje_exito = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    if (isset($_POST["valoracion"])) {
-        $valoracion = intval($_POST["valoracion"]);
-
-        try {
-            $pdo = Conexion::conectar();
-            $stmt = $pdo->query("SELECT MAX(id_soporte) AS id_soporte FROM soporte");
-            $id_soporte = $stmt->fetch(PDO::FETCH_ASSOC)['id_soporte'];
-
-            $stmt = $pdo->prepare("UPDATE soporte SET valoracion = ? WHERE id_soporte = ?");
-            $stmt->execute([$valoracion, $id_soporte]);
-
-            header("Location: ../index.php?ruta=soporte");
-            exit;
-
-        } catch (PDOException $e) {
-            echo "Error al guardar la valoración: " . $e->getMessage();
-        }
-    }
-
+    // Guardar nueva consulta
     if (isset($_POST["nombre"])) {
         $nombre = trim($_POST["nombre"]);
         $email = trim($_POST["email"]);
@@ -35,16 +17,52 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
 
-        $consulta = new Soporte($nombre, $email, $telefono, $dni, $mensaje);
+        $consulta = new Soporte($nombre, $email, $telefono, $dni, $mensaje, 'norecibido');
 
-        if ($consulta->guardarConsulta()) {
-            header("Location: ../vistas/modulos/valoracion.php");
+        $id_soporte = $consulta->guardarConsulta();
+
+        if ($id_soporte !== false) {
+            // Guardamos en sesión el ID para usar en la valoración
+            $_SESSION['id_soporte_valoracion'] = $id_soporte;
+
+            header("Location: ../index.php?ruta=valoracion");
             exit;
         } else {
-            echo "<script>alert('Error al enviar la consulta. Por favor, intentá nuevamente.'); window.history.back();</script>";
+            echo "Error al guardar la consulta.";
+            exit;
+        }
+    }
+    if (isset($_POST["id_soporte_estado"]) && isset($_POST["nuevo_estado"])) {
+        $id_soporte = intval($_POST["id_soporte_estado"]);
+        $nuevoEstado = trim($_POST["nuevo_estado"]);
+
+        if (Soporte::actualizarEstado($id_soporte, $nuevoEstado)) {
+            header("Location: ../index.php?ruta=ticket&estado=ok");
+            exit;
+        } else {
+            header("Location: ../index.php?ruta=ticket&estado=error");
+            exit;
+        }
+    }
+    // Guardar valoración
+    if (isset($_POST["valoracion"]) && isset($_POST["id_soporte"])) {
+        $valoracion = intval($_POST["valoracion"]);
+        $id_soporte = intval($_POST["id_soporte"]);
+
+        if ($valoracion < 1 || $valoracion > 5 || $id_soporte < 1) {
+            echo "Valoración o ID de soporte inválidos. Valoración: $valoracion, ID: $id_soporte";
+            exit;
+        }
+
+        if (Soporte::guardarValoracion($id_soporte, $valoracion)) {
+            // Limpiamos la sesión de la valoración ya realizada
+            unset($_SESSION['id_soporte_valoracion']);
+
+            header("Location: ../index.php?ruta=soporte");
+            exit;
+        } else {
+            echo "Error al guardar la valoración.";
             exit;
         }
     }
 }
-
-include '../vistas/modulos/soporte.php';

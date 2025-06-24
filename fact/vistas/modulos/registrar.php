@@ -1,68 +1,10 @@
 <?php
+require_once 'controlador/controlador_usuario.php';
+
+$mensaje = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  require_once 'modelos/usuario.php';
-  require_once 'modelos/cliente.php';
-
-  $nombreUsuario = trim($_POST['nombreUsuario']);
-  $nombre = trim($_POST['nombre']);
-  $apellido = trim($_POST['apellido']);
-  $email = trim($_POST['email']);
-  $password = $_POST['password'];
-  $telefono = trim($_POST['telefono']);
-  $fecha_nacimiento = $_POST['fecha_nacimiento'];
-  $dni = trim($_POST['dni']);
-
-  $errores = [];
-
-  // Validaciones del lado del servidor
-  if (!preg_match("/^[a-zA-Z0-9_]+$/", $nombreUsuario)) {
-    $errores[] = "El nombre de usuario solo puede contener letras, números y guiones bajos.";
-  }
-  if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/u", $nombre)) {
-    $errores[] = "El nombre solo puede contener letras.";
-  }
-  if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/u", $apellido)) {
-    $errores[] = "El apellido solo puede contener letras.";
-  }
-  if (!preg_match("/^[0-9 +]+$/", $telefono)) {
-    $errores[] = "El teléfono solo puede contener números y espacios.";
-  }
-  if (!ctype_digit($dni)) {
-    $errores[] = "El DNI debe contener solo números.";
-  }
-
-  if (!empty($errores)) {
-
-    $mensaje = '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-center">';
-    $mensaje .= '<strong class="font-bold">Errores en el formulario:</strong><br>';
-    foreach ($errores as $e) {
-      $mensaje .= htmlspecialchars($e) . "<br>";
-    }
-    $mensaje .= '</div>';
-  } else {
-
-    $usuario = new Usuario($nombreUsuario, $email, $password, 'cliente');
-
-    if ($usuario->existeEmail($email)) {
-      $mensaje = "<p class='text-red-600 text-center mt-4'>El email ya está registrado.</p>";
-    } elseif ($usuario->existeNombreUsuario($nombreUsuario)) {
-      $mensaje = "<p class='text-red-600 text-center mt-4'>El nombre de usuario ya está en uso.</p>";
-    } else {
-      $id_usuario = $usuario->guardar();
-
-      if ($id_usuario) {
-        $cliente = new Cliente($nombre, $apellido, $telefono, $fecha_nacimiento, 0, 0, $dni, $id_usuario);
-
-        if ($cliente->guardar()) {
-          $mensaje = "<p class='text-green-600 text-center mt-4'>Registro exitoso. Ya podés ingresar.</p>";
-        } else {
-          $mensaje = "<p class='text-red-600 text-center mt-4'>Error al guardar datos del cliente.</p>";
-        }
-      } else {
-        $mensaje = "<p class='text-red-600 text-center mt-4'>Error al guardar usuario.</p>";
-      }
-    }
-  }
+    $mensaje = UsuarioControlador::registrarUsuario($_POST);
 }
 ?>
 
@@ -73,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       Registrarse
     </h2>
 
-    <?php if (isset($mensaje)) echo $mensaje; ?>
+    <?php if (!empty($mensaje)) echo $mensaje; ?>
 
-    <form method="post" action="index.php?ruta=registrar" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
+    <form method="post" action="" class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800">
 
       <div>
         <label class="block mb-2 font-medium">Nombre de Usuario</label>

@@ -84,12 +84,25 @@ CREATE TABLE `soporte` (
   `mensaje` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
   `fecha` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `valoracion` INT NULL DEFAULT NULL,
+  `estado` VARCHAR(20) NOT NULL DEFAULT 'norecibido',
   PRIMARY KEY (`id_soporte`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `soporte` (`nombre`, `email`, `telefono`, `dni`, `mensaje`, `valoracion`) VALUES
-('Juan Pérez', 'juan@gmail.com', '123456789', '12345678', 'No puedo ver mi factura.', 3),
-('Ana García', 'ana@gmail.com', '987654321', '87654321', 'El sistema no carga bien.', 5);
+INSERT INTO `soporte` (`nombre`, `email`, `telefono`, `dni`, `mensaje`, `valoracion`, `estado`) VALUES
+('Juan Pérez', 'juan@gmail.com', '123456789', '12345678', 'No puedo ver mi factura.', 3, 'recibido'),
+('Ana García', 'ana@gmail.com', '987654321', '87654321', 'El sistema no carga bien.', 5, 'norecibido'),
+('Luis Fernández', 'luisf@example.com', '111222333', '45678912', 'Necesito cambiar mi dirección.', NULL, 'norecibido'),
+('María López', 'maria.l@example.com', '444555666', '78912345', '¿Cómo puedo obtener una factura detallada?', 4, 'recibido'),
+('Carlos Gómez', 'carlos.g@example.com', '777888999', '32165498', 'No me llegó el correo con la factura.', NULL, 'norecibido'),
+('Laura Martínez', 'laura.m@example.com', '222333444', '98765432', 'Problemas para iniciar sesión.', 2, 'recibido'),
+('Pedro Sánchez', 'pedro.s@example.com', '555666777', '56473829', 'Quiero dar de baja mi servicio.', NULL, 'norecibido'),
+('Sofía Torres', 'sofia.t@example.com', '888999000', '27364518', 'Consulta sobre el consumo de luz.', 5, 'recibido'),
+('Javier Díaz', 'javier.d@example.com', '333444555', '91827364', '¿Cuándo actualizan los precios?', NULL, 'norecibido'),
+('Elena Ruiz', 'elena.r@example.com', '666777888', '18273645', 'Solicito soporte técnico urgente.', 1, 'recibido'),
+('Miguel Ángel', 'miguel.a@example.com', '999000111', '56473829', 'No puedo imprimir mi factura.', NULL, 'norecibido'),
+('Patricia Soto', 'patricia.s@example.com', '101010101', '12349876', '¿Dónde puedo pagar en persona?', 4, 'recibido'),
+('Diego Morales', 'diego.m@example.com', '121212121', '78965412', 'Consulta sobre facturación electrónica.', NULL, 'norecibido'),
+('Valentina Cruz', 'valentina.c@example.com', '131313131', '45612378', 'Solicitud de cambio de plan.', 3, 'recibido');
 
 -- Índices y claves foráneas
 ALTER TABLE `usuario`

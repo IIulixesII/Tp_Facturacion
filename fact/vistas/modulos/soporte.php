@@ -1,44 +1,4 @@
-
-<head>
-  <meta charset="UTF-8" />
-  <title>Soporte</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Fuente profesional */
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* Fondo con imagen y overlay oscuro para mejor contraste */
-    body {
-background: url('fondo/fon.jpg') no-repeat center center fixed;
-      background-size: cover;
-      position: relative;
-      min-height: 100vh;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.7); /* azul oscuro translúcido */
-      z-index: -1;
-    }
-
-    /* Inputs y botones con sombras para profundidad */
-    input, button {
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
-    }
-
-    /* Efecto hover más suave */
-    button:hover {
-      transition: background-color 0.3s ease;
-    }
-  </style>
-
-
-
-</head>
+<main>
   <div class="h-20"> </div> 
   <div class=" flex items-center justify-center mt-6">
     <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-3xl w-full p-12 md:p-16">
@@ -88,7 +48,4 @@ background: url('fondo/fon.jpg') no-repeat center center fixed;
     </div>
   </div>
 
-  <div class="h-20"></div>
-
-</body>
-</html>
+</main>

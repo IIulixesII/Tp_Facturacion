@@ -31,22 +31,22 @@ $rol = $usuario->rol ?? null;
         <?php if (!$usuario): ?>
           <!-- Menú para visitantes con íconos -->
           <a href="index.php?ruta=registrar" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
-            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon2.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            <lottie-player src="/Tp_Facturacion/fact/icon/icon2.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
             Registrar
           </a>
           <a href="index.php?ruta=iniciar" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
-            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
-            Factura
+            <lottie-player src="/Tp_Facturacion/fact/icon/icon.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            Iniciar Sesión
           </a>
           <a href="index.php?ruta=soporte" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
-            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon3.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            <lottie-player src="/Tp_Facturacion/fact/icon/icon3.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
             Soporte
           </a>
         <?php elseif ($rol === 'admin'): ?>
           <!-- Menú para admin -->
-          <a href="index.php?ruta=administrar" class="text-white hover:text-blue-300 px-3 py-1 rounded">Lista usuario</a>
-          <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Agregar usuario</a>
-          <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Ticket</a>
+          <a href="index.php?ruta=administrar" class="text-white hover:text-blue-300 px-3 py-1 rounded">Listas usuarios</a>
+          <a href="index.php?ruta=agregar_usuario" class="text-white hover:text-blue-300 px-3 py-1 rounded">Agregar usuario</a>
+          <a href="index.php?ruta=ticket" class="text-white hover:text-blue-300 px-3 py-1 rounded">Ticket</a>
           <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
             Cerrar Sesión
           </a>
@@ -83,5 +83,5 @@ $rol = $usuario->rol ?? null;
     });
   </script>
 
-</body>
-</html>
+
+
