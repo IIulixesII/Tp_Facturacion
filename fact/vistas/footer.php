@@ -1,6 +1,5 @@
 
-<footer role="contentinfo" class="flex bottom-0 left-0 w-full bg-gradient-to-r from-blue-800 via-indigo-500 to-purple-400 text-white px-4 py-3 flex-row flex-wrap justify-between items-center gap-2 text-xs shadow-inner backdrop-blur-sm z-50">
-
+<footer role="contentinfo" class="flex bottom-0 left-0 w-full bg-gradient-to-r from-slate-900 via-indigo-900 to-purple-900 text-white px-4 py-3 flex-row flex-wrap justify-between items-center gap-2 text-xs shadow-inner backdrop-blur-sm z-50">
   <div class="flex-shrink-0">
     <h2 class="font-bold text-sm">Luz y Servicios</h2>
     <p class="max-w-[180px] truncate">gestión de servicios eléctricos.</p>

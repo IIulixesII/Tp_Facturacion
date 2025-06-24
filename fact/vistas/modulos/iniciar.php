@@ -1,7 +1,4 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 require_once 'modelos/Usuario.php';
 
@@ -11,9 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
+
     // Validación del email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $mensaje = "<p class='text-red-600 text-center mt-4'>Formato de email no válido.</p>";
+    } else {
         $usuario = Usuario::buscarPorEmail($email);
 
         if ($usuario && password_verify($password, $usuario->password)) {
