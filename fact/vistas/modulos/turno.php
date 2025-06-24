@@ -11,6 +11,8 @@ $turnoAtendido = $turno->turnoAtendido();
   <meta charset="UTF-8">
   <title>Gestión de Turnos</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <meta http-equiv="refresh" content="10">
+
 </head>
 <body class="flex flex-col min-h-screen">
 
