@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validación del email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $mensaje = "<p class='text-red-600 text-center mt-4'>Formato de email no válido.</p>";
-    } else {
         $usuario = Usuario::buscarPorEmail($email);
 
         if ($usuario && password_verify($password, $usuario->password)) {

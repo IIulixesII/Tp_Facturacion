@@ -9,7 +9,7 @@ $url = Routes::GetRoutes();
 $modulosPermitidos = [
     "factura", "registrar", "turno", "turnos","nuevo_cliente","soporte","valoracion",
     "iniciar", "administrar", "caja", "inicio",
-    "cerrar_sesion", "editar_usuario", "eliminar_usuario", 
+    "cerrar_sesion", "turnocajero", "editar_usuario", "eliminar_usuario"
 ];
 // Sanitizar parámetro ruta
 $ruta = isset($_GET["ruta"]) ? explode("/", $_GET["ruta"])[0] : null;

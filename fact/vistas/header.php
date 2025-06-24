@@ -9,10 +9,11 @@ $rol = $usuario->rol ?? null;
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sistema de Facturación de Luz</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body class="min-h-screen flex flex-col bg-[#1E293B] text-[#F1F5F9]">
@@ -28,52 +29,59 @@ $rol = $usuario->rol ?? null;
 
       <nav id="menu" class="hidden md:flex md:items-center space-x-6 text-base font-normal mt-4 md:mt-0 whitespace-nowrap">
         <?php if (!$usuario): ?>
-          <!-- Menú para visitantes -->
-          <a href="index.php?ruta=registrar" class="text-white hover:text-blue-300 px-3 py-1 rounded whitespace-nowrap">Registrarse</a>
-          <a href="index.php?ruta=iniciar"
-            class="text-white hover:text-blue-300 px-3 py-1 rounded whitespace-nowrap">
-            Iniciar Sesión
+          <!-- Menú para visitantes con íconos -->
+          <a href="index.php?ruta=registrar" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
+            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon2.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            Registrar
           </a>
-          <a href="index.php?ruta=soporte" class="text-white hover:text-blue-300 px-3 py-1 rounded whitespace-nowrap">Soporte</a>
+          <a href="index.php?ruta=iniciar" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
+            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            Factura
+          </a>
+          <a href="index.php?ruta=soporte" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
+            <lottie-player src="/Tp_Facturacion-main/fact/icon/icon3.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
+            Soporte
+          </a>
         <?php elseif ($rol === 'admin'): ?>
           <!-- Menú para admin -->
           <a href="index.php?ruta=administrar" class="text-white hover:text-blue-300 px-3 py-1 rounded">Lista usuario</a>
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Agregar usuario</a>
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Ticket</a>
-          <a href="index.php?ruta=cerrar_sesion"
-            class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
             Cerrar Sesión
           </a>
         <?php elseif ($rol === 'cajero'): ?>
           <!-- Menú para cajero -->
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Caja</a>
-          <a href="index.php?ruta=cerrar_sesion"
-            class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
             Cerrar Sesión
           </a>
         <?php elseif ($rol === 'cliente'): ?>
           <!-- Menú para cliente -->
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Inicio</a>
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Mi Perfil</a>
-          <a href="index.php?ruta=cerrar_sesion"
-            class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
             Cerrar Sesión
           </a>
         <?php endif; ?>
       </nav>
-
-
-
-
     </div>
   </header>
 
+  <div class="h-20"></div>
+
   <script>
-    const menuButton = document.getElementById('menuButton');
-    const menu = document.getElementById('menu');
-    menuButton?.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    const links = document.querySelectorAll('a.inline-flex');
+    links.forEach(link => {
+      const icon = link.querySelector('lottie-player');
+      link.addEventListener('mouseenter', () => {
+        icon.play();
+      });
+      link.addEventListener('mouseleave', () => {
+        icon.stop();
+      });
     });
   </script>
 
-  <div class="h-20"></div>
+</body>
+</html>
