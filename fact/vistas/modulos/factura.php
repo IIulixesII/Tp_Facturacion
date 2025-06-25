@@ -88,8 +88,12 @@
 
     <?php endif; ?>
 </div>
+</div>
+<div class="h-60"></div>
 
   
+
+
 
   <script src="<?php echo $url; ?>/vistas/plugins/jquery/jquery.min.js"></script>
   <script src="<?php echo $url; ?>/vistas/js/template.js"></script>
