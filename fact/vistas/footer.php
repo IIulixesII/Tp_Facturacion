@@ -14,5 +14,47 @@
           © 2025 Luz y Servicios. Todos los derechos reservados.
         </div>
       </footer>
-    </body>
-</html>
+
+      <script>
+        function handleCredentialResponse(response) {
+          const base64Url = response.credential.split('.')[1];
+          const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+          const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+
+          const userObject = JSON.parse(jsonPayload);
+
+          // Rellenar email
+          const emailInput = document.querySelector('input[name="email"]');
+          if (emailInput) {
+            emailInput.value = userObject.email;
+          }
+
+          // Rellenar nombreUsuario con la parte antes de @ del email
+          const usernameInput = document.querySelector('input[name="nombreUsuario"]');
+          if (usernameInput && userObject.email) {
+            usernameInput.value = userObject.email.split('@')[0];
+          }
+
+          // Poner foco en contraseña
+          const passwordInput = document.querySelector('input[name="password"]');
+          if (passwordInput) {
+            passwordInput.focus();
+          }
+
+          // Mostrar mensaje para que ingrese contraseña
+          let pwdMsg = document.getElementById('pwd-message');
+          if (!pwdMsg) {
+            pwdMsg = document.createElement('p');
+            pwdMsg.id = 'pwd-message';
+            pwdMsg.className = 'text-sm text-red-600 mt-1';
+            passwordInput.parentNode.appendChild(pwdMsg);
+          }
+          pwdMsg.textContent = 'Por favor ingrese su contraseña';
+        }
+      </script>
+
+      </body>
+
+      </html>

@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -23,9 +22,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `cliente`
---
 
 CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
@@ -41,7 +38,6 @@ CREATE TABLE `cliente` (
 
 --
 -- Volcado de datos para la tabla `cliente`
---
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `telefono`, `fecha_nacimiento`, `saldo`, `consumo_luz`, `dni`, `usuario_id`) VALUES
 (1, 'Ulises', 'Martínez', '2954326436', '1998-05-05', 32122.00, 2223, 45109702, 3),
@@ -52,9 +48,7 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `telefono`, `fecha_nacimiento
 
 -- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `factura`
---
 
 CREATE TABLE `factura` (
   `id` int(11) NOT NULL,
@@ -66,9 +60,7 @@ CREATE TABLE `factura` (
 
 -- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `soporte`
---
 
 CREATE TABLE `soporte` (
   `id_soporte` int(11) NOT NULL,
@@ -78,21 +70,32 @@ CREATE TABLE `soporte` (
   `dni` varchar(20) DEFAULT NULL,
   `mensaje` text NOT NULL,
   `fecha` timestamp NULL DEFAULT current_timestamp(),
-  `valoracion` int(11) DEFAULT NULL
+  `valoracion` int(11) DEFAULT NULL,
+  `estado` varchar(20) DEFAULT 'norecibido'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `soporte`
---
 
-INSERT INTO `soporte` (`id_soporte`, `nombre`, `email`, `telefono`, `dni`, `mensaje`, `fecha`, `valoracion`) VALUES
-(1, 'mel', 'melanyascencio908@gmail.com', '41365', '5151200', 'hola', '2025-06-24 12:40:33', 4);
+INSERT INTO `soporte` (`id_soporte`, `nombre`, `email`, `telefono`, `dni`, `mensaje`, `valoracion`, `estado`) VALUES
+(1, 'Juan Pérez', 'juan@gmail.com', '123456789', '12345678', 'No puedo ver mi factura.', 3, 'recibido'),
+(2, 'Ana García', 'ana@gmail.com', '987654321', '87654321', 'El sistema no carga bien.', 5, 'norecibido'),
+(3, 'Luis Fernández', 'luisf@example.com', '111222333', '45678912', 'Necesito cambiar mi dirección.', NULL, 'norecibido'),
+(4, 'María López', 'maria.l@example.com', '444555666', '78912345', '¿Cómo puedo obtener una factura detallada?', 4, 'recibido'),
+(5, 'Carlos Gómez', 'carlos.g@example.com', '777888999', '32165498', 'No me llegó el correo con la factura.', NULL, 'norecibido'),
+(6, 'Laura Martínez', 'laura.m@example.com', '222333444', '98765432', 'Problemas para iniciar sesión.', 2, 'recibido'),
+(7, 'Pedro Sánchez', 'pedro.s@example.com', '555666777', '56473829', 'Quiero dar de baja mi servicio.', NULL, 'norecibido'),
+(8, 'Sofía Torres', 'sofia.t@example.com', '888999000', '27364518', 'Consulta sobre el consumo de luz.', 5, 'recibido'),
+(9, 'Javier Díaz', 'javier.d@example.com', '333444555', '91827364', '¿Cuándo actualizan los precios?', NULL, 'norecibido'),
+(10, 'Elena Ruiz', 'elena.r@example.com', '666777888', '18273645', 'Solicito soporte técnico urgente.', 1, 'recibido'),
+(11, 'Miguel Ángel', 'miguel.a@example.com', '999000111', '56473829', 'No puedo imprimir mi factura.', NULL, 'norecibido'),
+(12, 'Patricia Soto', 'patricia.s@example.com', '101010101', '12349876', '¿Dónde puedo pagar en persona?', 4, 'recibido'),
+(13, 'Diego Morales', 'diego.m@example.com', '121212121', '78965412', 'Consulta sobre facturación electrónica.', NULL, 'norecibido'),
+(14, 'Valentina Cruz', 'valentina.c@example.com', '131313131', '45612378', 'Solicitud de cambio de plan.', 3, 'recibido');
 
 -- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `turno`
---
 
 CREATE TABLE `turno` (
   `id` int(11) NOT NULL,
@@ -103,7 +106,6 @@ CREATE TABLE `turno` (
 
 --
 -- Volcado de datos para la tabla `turno`
---
 
 INSERT INTO `turno` (`id`, `nombre`, `numero`, `estado`) VALUES
 (1, 'Dario', '2', 'sinatender'),
@@ -113,9 +115,7 @@ INSERT INTO `turno` (`id`, `nombre`, `numero`, `estado`) VALUES
 
 -- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `usuario`
---
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
@@ -128,7 +128,6 @@ CREATE TABLE `usuario` (
 
 --
 -- Volcado de datos para la tabla `usuario`
---
 
 INSERT INTO `usuario` (`id`, `nombreUsuario`, `email`, `password`, `rol`, `activo`) VALUES
 (1, 'Admin1', 'a@a.com', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'admin', 1),
@@ -139,73 +138,42 @@ INSERT INTO `usuario` (`id`, `nombreUsuario`, `email`, `password`, `rol`, `activ
 (6, 'Cata001', 'catalina@a.com', '$2a$07$asxx54ahjppf45sd87a5auJRR6foEJ7ynpjisKtbiKJbvJsoQ8VPS', 'cliente', 1),
 (7, 'mel23', 'melanyascencio908@gmail.com', '$2y$10$nRwvFdKqKYVW6NEoorhA9Og1bOF8eCQjTzrJ9bSK3l3kdrX04pk0u', 'cliente', 1);
 
---
+-- --------------------------------------------------------
+
 -- Índices para tablas volcadas
---
 
---
--- Indices de la tabla `cliente`
---
 ALTER TABLE `cliente`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `factura`
---
 ALTER TABLE `factura`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `soporte`
---
 ALTER TABLE `soporte`
-  ADD PRIMARY KEY (`id_soporte`) USING BTREE;
+  ADD PRIMARY KEY (`id_soporte`);
 
---
--- Indices de la tabla `turno`
---
 ALTER TABLE `turno`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `usuario`
---
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`) USING BTREE;
+  ADD PRIMARY KEY (`id`);
 
---
 -- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `cliente`
---
 ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT de la tabla `factura`
---
 ALTER TABLE `factura`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de la tabla `soporte`
---
 ALTER TABLE `soporte`
-  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
---
--- AUTO_INCREMENT de la tabla `turno`
---
 ALTER TABLE `turno`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
---
--- AUTO_INCREMENT de la tabla `usuario`
---
 ALTER TABLE `usuario`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
