@@ -60,7 +60,7 @@ if ($usuario && !isset($_GET['ruta'])) {
           <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">Cerrar Sesión</a>
         <?php elseif ($rol === 'cajero'): ?>
           <!-- Menú para cajero -->
-          <a href="#" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Caja</a>
+          <a href="index.php?ruta=caja" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Caja</a>
           <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">Cerrar Sesión</a>
         <?php elseif ($rol === 'cliente'): ?>
           <!-- Menú para cliente -->
@@ -94,7 +94,7 @@ if ($usuario && !isset($_GET['ruta'])) {
           <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">Cerrar Sesión</a>
         <?php elseif ($rol === 'cajero'): ?>
           <!-- Menú para cajero -->
-          <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Caja</a>
+          <a href="index.php?ruta=caja" class="text-white hover:text-blue-300 px-3 py-1 rounded">Caja</a>
           <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">Cerrar Sesión</a>
         <?php elseif ($rol === 'cliente'): ?>
           <!-- Menú para cliente -->

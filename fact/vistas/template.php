@@ -9,7 +9,7 @@ $url = Routes::GetRoutes();
 $modulosPermitidos = [
     "factura", "registrar", "turno", "turnos","nuevo_cliente","soporte","valoracion",
     "iniciar", "administrar", "caja", "inicio",
-    "cerrar_sesion", "turnocajero", "editar_usuario", "eliminar_usuario", "agregar_usuario", "ticket"
+    "cerrar_sesion", "turnocajero", "editar_usuario", "eliminar_usuario", "agregar_usuario", "ticket","clima"
 ];
 // Sanitizar parámetro ruta
 $ruta = isset($_GET["ruta"]) ? explode("/", $_GET["ruta"])[0] : null;
@@ -24,11 +24,10 @@ if ($ruta && in_array($ruta, $modulosPermitidos)) {
 
 } elseif ($ruta) {
     // Si la ruta no está permitida
-    include "modulos/clima.php";
     echo '<p class="text-red-500 mt-4">Ruta no encontrada. Verifique la URL.</p>';
 
 } else {
-    // Si no hay ruta, mostrar contenido por defecto
+    include "modulos/clima.php";
     include_once "contenidoindex.php";
 }
 ?>

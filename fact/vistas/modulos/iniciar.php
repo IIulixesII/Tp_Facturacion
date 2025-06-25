@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<div class="h-20"></div>
 
 <div class="flex items-center justify-center px-4 min-h-screen">
     <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl max-w-md w-full p-10 md:p-12">
@@ -83,6 +84,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </svg>
                 </button>
             </div>
+                
+            <div class="flex justify-center">
+                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+            </div>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
             <div class="text-center">
                 <button type="submit" class="bg-indigo-600 text-white font-semibold px-10 py-3 rounded-lg shadow-md hover:bg-indigo-700">
@@ -147,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         let ruta = 'index.php';
         if (rol === 'admin') ruta = 'index.php?ruta=administrar';
         else if (rol === 'cajero') ruta = 'index.php?ruta=caja';
-        else if (rol === 'cliente') ruta = 'index.php?ruta=inicio';
+        else if (rol === 'cliente') ruta = 'index.php?ruta=factura';
         window.location.href = ruta;
     });
     <?php endif; ?>

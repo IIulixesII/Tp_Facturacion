@@ -25,6 +25,7 @@ $turnoAtendido = $turno->turnoAtendido();
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen">
+<div class="h-40"></div>
 
   <!-- Contenido principal -->
   <main class="flex-grow container mx-auto px-6 py-8">
@@ -77,6 +78,8 @@ $turnoAtendido = $turno->turnoAtendido();
       </div>
 
     </div>
+
+  
   </main>
 
  
