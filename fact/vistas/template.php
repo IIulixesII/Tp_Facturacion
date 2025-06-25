@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'includes/sesion.php';
 date_default_timezone_set('America/Argentina/Buenos_Aires');
 $url = Routes::GetRoutes();
 ?>
@@ -9,7 +9,7 @@ $url = Routes::GetRoutes();
 $modulosPermitidos = [
     "factura", "registrar", "turno", "turnos","nuevo_cliente","soporte","valoracion",
     "iniciar", "administrar", "caja", "inicio",
-    "cerrar_sesion", "turnocajero"
+    "cerrar_sesion", "turnocajero", "editar_usuario", "eliminar_usuario", "agregar_usuario", "ticket"
 ];
 // Sanitizar parámetro ruta
 $ruta = isset($_GET["ruta"]) ? explode("/", $_GET["ruta"])[0] : null;

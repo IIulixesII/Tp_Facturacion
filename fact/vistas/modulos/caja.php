@@ -5,9 +5,10 @@ if (!defined('ACCESO_PERMITIDO')) {
     exit;
 }
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Iniciar sesión si no está iniciada
+require_once 'includes/sesion.php';
+
+
 
 // Verificar sesión y rol
 if (!isset($_SESSION['usuario']) || $_SESSION['usuario']->rol !== 'cajero') {

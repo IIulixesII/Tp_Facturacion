@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php';
+require_once __DIR__ . '/../conexion.php';
 
 class Usuario
 {
@@ -37,14 +37,12 @@ class Usuario
     {
     $pdo = Conexion::conectar();
 
-    $hash = password_hash($this->password, PASSWORD_DEFAULT);
-
     $stmt = $pdo->prepare("INSERT INTO usuario (nombreUsuario, email, password, rol, activo) VALUES (?, ?, ?, ?, 1)");
-    if ($stmt->execute([$this->nombreUsuario, $this->email, $hash, $this->rol])) {
+    if ($stmt->execute([$this->nombreUsuario, $this->email, $this->password, $this->rol])) {
         return $pdo->lastInsertId();
     }
     return false;
-    }
+}
 
 
 
