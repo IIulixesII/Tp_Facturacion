@@ -6,17 +6,12 @@ $exito = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultado = UsuarioControlador::registrarUsuario($_POST);
-    if ($resultado === 'Usuario registrado con éxito') {
-        $mensaje = $resultado;
-        $exito = true;
-    } else {
-        $mensaje = $resultado; 
-    }
+    $mensaje = $resultado['mensaje'];
+    $exito = $resultado['exito'];
 }
-
 ?>
 
-<!-- FORMULARIO DE REGISTRO CON LOGIN GOOGLE -->
+<!-- FORMULARIO DE REGISTRO -->
 
 <div class="pt-9">
   <main>
@@ -26,7 +21,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           Registrarse
         </h2>
 
-        <?php if (!empty($mensaje)) echo $mensaje; ?>
+        <?php if (!$exito && $mensaje): ?>
+          <div class="mb-6"><?= $mensaje ?></div>
+        <?php endif; ?>
 
         <div id="g_id_onload"
           data-client_id="928046862111-m56n0kkc7b6q0c4tl2ugeomsht4v1ca4.apps.googleusercontent.com"
@@ -64,15 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label class="block mb-2 font-medium">Contraseña</label>
             <input type="password" name="password" id="inputPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" />
             <button type="button" id="togglePassword" class="absolute top-11 right-3 text-gray-500 hover:text-gray-700 focus:outline-none" aria-label="Mostrar u ocultar contraseña">
-              <!-- Icono ojo cerrado -->
-              <svg id="iconEyeClosed" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg id="iconEyeClosed" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5 0-9-4-9-7s4-7 9-7a8.96 8.96 0 014.5 1.185M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18" />
               </svg>
-              <!-- Icono ojo abierto oculto -->
-              <svg id="iconEyeOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <svg id="iconEyeOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
@@ -101,6 +94,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </main>
 </div>
 
+<?php if ($exito): ?>
+<!-- Modal éxito -->
+<div id="modalExito" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white rounded-lg p-6 max-w-sm w-full text-center shadow-lg">
+    <div class="text-green-600 mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+      </svg>
+    </div>
+    <p class="mb-6 font-semibold text-lg text-black"><?= htmlspecialchars($mensaje) ?></p>
+    <button id="btnAceptar" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg">
+      Aceptar
+    </button>
+  </div>
+</div>
+<?php endif; ?>
+
 <script>
   const togglePassword = document.getElementById('togglePassword');
   const passwordInput = document.getElementById('inputPassword');
@@ -120,7 +130,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(c =>
       '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
     ).join(''));
-
     const userObject = JSON.parse(jsonPayload);
 
     const emailInput = document.querySelector('input[name="email"]');
@@ -133,4 +142,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     passwordInput.focus();
   }
+
+  <?php if ($exito): ?>
+  document.getElementById('btnAceptar').addEventListener('click', () => {
+    window.location.href = 'index.php?ruta=iniciar';
+  });
+  <?php endif; ?>
 </script>

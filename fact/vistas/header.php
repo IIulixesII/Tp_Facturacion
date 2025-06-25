@@ -3,6 +3,12 @@ require_once 'includes/sesion.php';
 
 $usuario = $_SESSION['usuario'] ?? null;
 $rol = $usuario->rol ?? null;
+
+// Si hay sesión activa y no hay ruta especificada, forzar cierre de sesión
+if ($usuario && !isset($_GET['ruta'])) {
+    header('Location: index.php?ruta=cerrar_sesion');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,29 +57,23 @@ $rol = $usuario->rol ?? null;
           <a href="index.php?ruta=administrar" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Listas usuarios</a>
           <a href="index.php?ruta=agregar_usuario" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Agregar usuario</a>
           <a href="index.php?ruta=ticket" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Ticket</a>
-          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">Cerrar Sesión</a>
         <?php elseif ($rol === 'cajero'): ?>
           <!-- Menú para cajero -->
           <a href="#" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Caja</a>
-          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">Cerrar Sesión</a>
         <?php elseif ($rol === 'cliente'): ?>
           <!-- Menú para cliente -->
           <a href="#" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Inicio</a>
           <a href="#" class="block py-2 px-3 rounded hover:bg-indigo-700 transition text-white">Mi Perfil</a>
-          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="block py-2 px-4 rounded-full bg-blue-800 hover:bg-blue-900 text-white font-semibold transition duration-200 text-center">Cerrar Sesión</a>
         <?php endif; ?>
       </nav>
 
       <!-- Menú desktop -->
-      <nav id="menu-desktop"
-        class="hidden md:flex md:items-center md:space-x-6 text-base font-normal mt-4 md:mt-0 whitespace-nowrap">
+      <nav id="menu-desktop" class="hidden md:flex md:items-center md:space-x-6 text-base font-normal mt-4 md:mt-0 whitespace-nowrap">
         <?php if (!$usuario): ?>
+          <!-- Menú para visitantes -->
           <a href="index.php?ruta=registrar" class="text-white hover:text-blue-300 px-3 py-1 rounded inline-flex flex-col items-center">
             <lottie-player src="/Tp_Facturacion/fact/icon/icon2.json" background="transparent" speed="1" style="width:24px; height:24px;" loop></lottie-player>
             Registrar
@@ -87,26 +87,22 @@ $rol = $usuario->rol ?? null;
             Soporte
           </a>
         <?php elseif ($rol === 'admin'): ?>
+          <!-- Menú para admin -->
           <a href="index.php?ruta=administrar" class="text-white hover:text-blue-300 px-3 py-1 rounded">Listas usuarios</a>
           <a href="index.php?ruta=agregar_usuario" class="text-white hover:text-blue-300 px-3 py-1 rounded">Agregar usuario</a>
           <a href="index.php?ruta=ticket" class="text-white hover:text-blue-300 px-3 py-1 rounded">Ticket</a>
-          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">Cerrar Sesión</a>
         <?php elseif ($rol === 'cajero'): ?>
+          <!-- Menú para cajero -->
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Caja</a>
-          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">Cerrar Sesión</a>
         <?php elseif ($rol === 'cliente'): ?>
+          <!-- Menú para cliente -->
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Inicio</a>
           <a href="#" class="text-white hover:text-blue-300 px-3 py-1 rounded">Mi Perfil</a>
-          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
-            Cerrar Sesión
-          </a>
+          <a href="index.php?ruta=cerrar_sesion" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">Cerrar Sesión</a>
         <?php endif; ?>
       </nav>
-
     </div>
   </header>
 
@@ -118,7 +114,7 @@ $rol = $usuario->rol ?? null;
       menuMobile.classList.toggle("hidden");
     });
 
-    // Controla la animación de los iconos lottie en los links (solo desktop)
+    // Control animación Lottie solo en menú desktop
     const links = document.querySelectorAll('#menu-desktop a.inline-flex');
     links.forEach(link => {
       const icon = link.querySelector('lottie-player');
